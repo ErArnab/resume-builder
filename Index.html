@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <h1>Resume Builder</h1>
+    <form id="resume-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" required>
+      
+      <label for="education">Education:</label>
+      <textarea id="education" rows="4" required></textarea>
+      
+      <label for="experience">Work Experience:</label>
+      <textarea id="experience" rows="4" required></textarea>
+      
+      <button type="submit">Generate Resume</button>
+    </form>
+    
+    <div id="resume-preview">
+      <h2>Resume Preview</h2>
+      <div id="resume-template">
+        <!-- The generated resume will be inserted here -->
+      </div>
+      <button id="download-button">Download PDF</button>
+    </div>
+  </body>
+</html>
