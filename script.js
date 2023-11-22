@@ -1,40 +1,28 @@
-const form = document.getElementById('resume-form');
-const resumePreview = document.getElementById('resume-preview');
-const resumeTemplate = document.getElementById('resume-template');
-const downloadButton = document.getElementById('download-button');
+// script.js
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-  const education = document.getElementById('education').value;
-  const experience = document.getElementById('experience').value;
-  
-  // Generate the resume HTML based on the user's input
-  const resumeHTML = `
-    <div>
-      <h3>${name}</h3>
-      <p>Email: ${email}</p>
-      <p>Phone: ${phone}</p>
-      
-      <h4>Education</h4>
-      <p>${education}</p>
-      
-      <h4>Work Experience</h4>
-      <p>${experience}</p>
-    </div>
-  `;
-  
-  // Insert the generated HTML into the resume template
-  resumeTemplate.innerHTML = resumeHTML;
-  
-  // Show the resume preview
-  resumePreview.style.display = 'block';
+document.getElementById('generate-cv').addEventListener('click', function() {
+    // Retrieve and organize user input
+    var personalInfo = document.getElementById('personal-info').querySelectorAll('input');
+    var education = document.getElementById('education').querySelectorAll('input');
+    var experience = document.getElementById('experience').querySelectorAll('input');
+    var skills = document.getElementById('skills').querySelectorAll('input');
+
+    // Create a CV object
+    var cv = {
+        personalInfo: getInputValues(personalInfo),
+        education: getInputValues(education),
+        experience: getInputValues(experience),
+        skills: getInputValues(skills)
+    };
+
+    // Display the CV (you can replace this with saving to a database or other functionality)
+    console.log(cv);
 });
 
-downloadButton.addEventListener('click', () => {
-  // Convert the resume preview to a PDF and download it
-  // You will need to use a third-party library to do this, such as jsPDF or html2pdf
-});
+function getInputValues(inputs) {
+    var values = {};
+    inputs.forEach(function(input) {
+        values[input.name] = input.value;
+    });
+    return values;
+}
